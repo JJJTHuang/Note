@@ -34,9 +34,9 @@ target --> document\
 # 4.var let const
 > (关于变量建议看看《你不知道的javascript》,笔者从底层出发,较为详细说明了javascript编译与执行过程)
 
-var是个大bug,只要当前代码是同一作用域，var会发生预编译(也就是所谓的变量提升、En:hoisting),所以无论在当前作用域的哪一个位置声明变量(eg:var a = 1),var a 都会比 = 号先执行,function声明的优先级>var声明
+var是个大bug,只要当前代码是同一作用域，var会发生预编译(也就是所谓的变量提升、En:hoisting),所以无论在当前作用域的哪一个位置声明变量(eg:var a = 1),var a 都会比 = 号先执行,function声明的优先级>var声明
 
-另外var处于函数作用域⤵️
+另外var处于函数作用域⤵️
 ```
 function varTest() {
  var x = 1;
@@ -62,9 +62,9 @@ const声明创建一个值的只读引用,其引用是不可变的
 
 # 6.polling & long-poll
 
-*polling(轮询)* 不停的去发送请求,请求后即可返回
+*polling(轮询)* 不停的去发送请求,请求后即可返回
 
-*long-poll(长轮询)* 发送请求后一直等待,直到真正有数据的时候才返回,这种以类似polling的方式去发送请求减少了服务器发送的数据量
+*long-poll(长轮询)* 发送请求后一直等待,直到真正有数据的时候才返回,这种以类似polling的方式去发送请求减少了服务器发送的数据量
 
 # 7.vue生命周期
 
@@ -103,7 +103,7 @@ data = [Object object],$el = \<div id="app">222\</div>,this.message = 222
 当前页面已经删除组件(eg:若app.message = xxx,视图不会发生变化)
 data = [Object object],$el = \<div id="app">222\</div>,this.message = 222
 ```
-# 8.innerHtml & createElement & docuemntFragemnt
+# 8.innerHtml & createElement & docuemntFragemnt
 
 - 当发生节点操作时，应该尽可能减少重绘与重排
 
@@ -192,9 +192,9 @@ str.split('').reverse().join('')
     3.4 把JS放到底部(加载js时会对后续的资源造成阻塞，必须得等js加载完才去加载后续的文件 ，所以就把js放在页面底部最后加载。)
     3.5 将CSS和JS放到外部文件中(目的是缓存文件)
 
-# 前端安全(xss和csfr)
+# 13.前端安全(xss和csfr)
 
-XSS全称Cross-Site-Scripting(跨域脚本攻击),其原理是攻击者在某些特定的地方(某些后台读取数据的地方,例如：输入账户/评论框...)注入恶意字符串(例如:while(true){alert('HEHE')}),若前端没有校验后端也没有校验,则服务解析传送过来的字符串直接发送到用户,网站可能会挂掉,甚至可能泄密,相应的防御机制有1.前端字符串过滤(encodeURI)2.后端特定数据校验
+XSS全称Cross-Site-Scripting(跨域脚本攻击),其原理是攻击者在某些特定的地方(某些后台读取数据的地方,例如：输入账户/评论框...)注入恶意字符串(例如:while(true){alert('HEHE')}),若前端没有校验后端也没有校验,则服务解析传送过来的字符串直接发送到用户,网站可能会挂掉,甚至可能泄密,相应的防御机制有1.前端字符串过滤(encodeURI)2.后端特定数据校验
 
 [CSFR](https://zhuanlan.zhihu.com/p/22521378?utm_medium=social&utm_source=qq)
-全称Cross-site-fogery-request(跨域请求伪造),其原理是伪造用户请求，做自己的事情，例如(某人在评论区写下惊世骇俗的标题，并做了一个链接,点击该链接(该链接包含一串恶意脚本),会伪造用户行为,让用户自动发送消息给朋友,或者做其他事情),此时就发送了一串CSFR,相应的防御机制有1.最好禁止GET请求2.服务端生成一个token发送到用户,当用户发生请求,都加上该token,与服务端生成的进行校验
+全称Cross-site-fogery-request(跨域请求伪造),其原理是伪造用户请求，做自己的事情，例如(某人在评论区写下惊世骇俗的标题，并做了一个链接,点击该链接(该链接包含一串恶意脚本),会伪造用户行为,让用户自动发送消息给朋友,或者做其他事情),此时就发送了一串CSFR,相应的防御机制有1.最好禁止GET请求2.服务端生成一个token发送到用户,当用户发生请求,都加上该token,与服务端生成的进行校验
