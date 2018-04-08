@@ -198,3 +198,51 @@ XSS全称Cross-Site-Scripting(跨域脚本攻击),其原理是攻击者在某些
 
 [CSFR](https://zhuanlan.zhihu.com/p/22521378?utm_medium=social&utm_source=qq)
 全称Cross-site-fogery-request(跨域请求伪造),其原理是伪造用户请求，做自己的事情，例如(某人在评论区写下惊世骇俗的标题，并做了一个链接,点击该链接(该链接包含一串恶意脚本),会伪造用户行为,让用户自动发送消息给朋友,或者做其他事情),此时就发送了一串CSFR,相应的防御机制有1.最好禁止GET请求2.服务端生成一个token发送到用户,当用户发生请求,都加上该token,与服务端生成的进行校验
+
+# 14.浏览器端的Event loop
+
+首先js从设计之初就是单线程的语言，另外event loop是一种实现异步的机制，浏览器端，event loop基于Javascript Run Time(运行环境)
+
+![图1](https://img-blog.csdn.net/20160922091924733)
+
+所有事件都安排在主线程中执行,形成一个执行栈(Call Stack)，主线程外有一个任务队列(Task queue)，当发生异步操作时,会将该事件放入任务队列,主线程继续执行当前任务栈中的事件，当执行栈为空(即事件执行完后)，会去消息队列中找未执行的事件并执行，主线程重复以上操作就是Event loop.
+
+!(定时器并不是特例。到达时间点后，会形成一个事件（timeout事件）。不同的是一般事件是靠底层系统或者线程池之类的产生事件，但定时器事件是靠事件循环不停检查系统时间来判定是否到达时间点来产生事件)
+
+最后通过一个视频来生动的讲述这个过程,[点我](https://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html)
+
+# 15.Node-Event loop
+
+一个简化的eventloop操作(图自nodejs官网)
+```
+   ┌───────────────────────┐
+┌─>│        timers         │
+│  └──────────┬────────────┘
+│  ┌──────────┴────────────┐
+│  │     I/O callbacks     │
+│  └──────────┬────────────┘
+│  ┌──────────┴────────────┐
+│  │     idle, prepare     │
+│  └──────────┬────────────┘      ┌───────────────┐
+│  ┌──────────┴────────────┐      │   incoming:   │
+│  │         poll          │<─────┤  connections, │
+│  └──────────┬────────────┘      │   data, etc.  │
+│  ┌──────────┴────────────┐      └───────────────┘
+│  │        check          │
+│  └──────────┬────────────┘
+│  ┌──────────┴────────────┐
+└──┤    close callbacks    │
+   └───────────────────────┘
+```
+如上图所示，node的eventloop包含六个阶段，每个阶段其实都是一个FIFO的queue
+
+## Phases Overview(阶段总览)
+- timers(setTimeout,setInterval)
+- I/O(执行io操作的回调，除了setTimeout,setImmediate,close)
+- idle,prepare(某些内部操作)
+- poll(io操作,node会在适当条件下阻塞在这里)
+- check(执行setImmediate)
+- close callbacks(执行socket.on('close',...)的类似操作) 
+
+
+> 以下资料部分由本人平时积累总结，部分借鉴于网络，小白无意冒犯，若侵犯到您的权益，望告知。
