@@ -234,15 +234,96 @@ XSS全称Cross-Site-Scripting(跨域脚本攻击),其原理是攻击者在某些
 └──┤    close callbacks    │
    └───────────────────────┘
 ```
-如上图所示，node的eventloop包含六个阶段，每个阶段其实都是一个FIFO的queue
+
+如上图所示，node的eventloop包含六个阶段，***每个阶段都有一个FIFO的回调队列（queue）要执行。而每个阶段有自己的特殊之处，简单说，就是当event loop进入某个阶段后，会执行该阶段特定的（任意）操作，然后才会执行这个阶段的队列里的回调。当队列被执行完，或者执行的回调数量达到上限后，event loop会进入下个阶段。***
 
 ## Phases Overview(阶段总览)
 - timers(setTimeout,setInterval)
-- I/O(执行io操作的回调，除了setTimeout,setImmediate,close)
+- I/O(执行一些系统操作的回调，除了setTimeout,setImmediate,close)
 - idle,prepare(某些内部操作)
 - poll(io操作,node会在适当条件下阻塞在这里)
 - check(执行setImmediate)
 - close callbacks(执行socket.on('close',...)的类似操作) 
+
+附带一个人觉得讲的很好[Node_Eventloop](https://github.com/creeperyang/blog/issues/26)
+
+
+# 16.http缓存
+
+[参考](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Caching_FAQ)
+
+```
+缓存涉及的部分头部字段
+
+1.Pragma(1.0)
+no-cache  与Cache-Control: no-cache 效果一致。强制要求缓存服务器在返回缓存的版本之前将请求提交到源头服务器进行验证。
+
+2.expires(1.0)服务端生成返回的到期时间
+
+3.cache-control(S->C)
+no-cache 每当请求资源，缓存会将请求发送至服务器，服务端对请求资源进行日期对比，若未过期(即返回304)，缓存就使用本地缓存
+max-age = 400 缓存时间400s
+private 私有缓存(只能应用于本地浏览器私有缓存中)
+public 共享缓存(即该响应可被任何中间人(代理,CDN)缓存)
+no-store 不缓存
+
+4.if-modified-since:Sun, 08 Apr 2018 09:49:44 GMT(C->S)资源缓存的日期 
+
+5.Last-modified:Sun, 08 Apr 2018 09:49:44 GMT(S->C)资源的最后修改日期
+
+6.Etag:asdsaxxxxxx(S->C)  服务器响应请求时，告诉浏览器当前资源在服务器的唯一标识（生成规则由服务器决定）。
+
+7.if-none-match:asdsaxxxxxx(C->S)  客户端发请求时，告知服务器上次接收的唯一标识，若相同则使用缓存(304)，不同则请求资源
+
+**优先级比较**
+Cache-control > expires
+
+Etag > if-modified-since
+```
+
+# 17.浏览器渲染一个页面的过程
+
+[参考](https://segmentfault.com/a/1190000014070240)
+
+假设该页面结构如下
+```
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="style.css" rel="stylesheet">
+    <title>Critical Path</title>
+  </head>
+  <body>
+    <p>Hello <span>web performance</span> students!</p>
+    <div><img src="awesome-photo.jpg"></div>
+  </body>
+</html>
+```
+
+1.获取html文档,逐步解析并生成dom tree
+
+**无论是DOM还是CSSOM，都是要经过Bytes → characters → tokens → nodes → object model这个过程。⬇️**
+
+
+![](https://segmentfault.com/img/remote/1460000014070244?w=800&h=443)
+
+
+2.获取css资源后,生成cssom tree
+
+3.生成Render tree(将dom tree与cssom tree结合)⬇️
+
+*DOM树从根节点开始遍历可见节点，这里之所以强调了“可见”，是因为如果遇到设置了类似display: none;的不可见节点，在render过程中是会被跳过的（但visibility: hidden; opacity: 0这种仍旧占据空间的节点不会被跳过render），保存各个节点的样式信息及其余节点的从属关系。*
+![](https://segmentfault.com/img/remote/1460000014070243?w=800&h=374)
+
+4.布局(Layout)
+
+5.Paint(绘制)
+
+**关于重排(reflow)与重绘(repaint)**
+
+reflow:Dom tree发生改变,浏览器执行1-5的过程
+
+repaint:某些元素的状态发生改变(例如:color,backgroundColor),但Dom tree没有发生变化,则重新绘制这些元素
 
 
 > 以上资料部分由本人平时积累总结，部分借鉴于网络，小白无意冒犯，若侵犯到您的权益，望告知。
