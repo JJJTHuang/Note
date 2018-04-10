@@ -260,7 +260,7 @@ no-cache  与Cache-Control: no-cache 效果一致。强制要求缓存服务器�
 2.expires(1.0)服务端生成返回的到期时间
 
 3.cache-control(S->C)
-no-cache 每当请求资源，缓存会将请求发送至服务器，服务端对请求资源进行日期对比，若未过期(即返回304)，缓存就使用本地缓存
+no-cache:必须先与服务器确认返回的响应是否发生了变化，然后才能使用该响应来满足后续对同一网址的请求。因此，如果存在合适的验证令牌 (ETag)，no-cache 会发起往返通信来验证缓存的响应，但如果资源未发生变化，则可避免下载。
 max-age = 400 缓存时间400s
 private 私有缓存(只能应用于本地浏览器私有缓存中)
 public 共享缓存(即该响应可被任何中间人(代理,CDN)缓存)
@@ -324,5 +324,90 @@ reflow:Dom tree发生改变,浏览器执行1-5的过程
 
 repaint:某些元素的状态发生改变(例如:color,backgroundColor),但Dom tree没有发生变化,则重新绘制这些元素
 
+# 18.TCP & UDP
 
+[暂存连接](https://blog.csdn.net/monkeynote/article/details/45868085)
+
+[关于TCP的三次握手](https://github.com/jawil/blog/issues/14)
+```
+TCP
+三次握手，四次分手
+1.保持连接的状态
+2.保证传输可靠性
+3.传输速度较慢
+
+UDP
+1.不保证连接状态
+2.不保证数据安全送达
+3.传输速度较快
+```
+
+# 19.垂直居中
+
+1.line-height:height;(块级元素)
+
+2.display:inline-block;verticle-align:middle;
+
+3.display:flex; align-items:center
+
+4.position:absolute;top:50%;margin-top:-0.5*height;
+
+5.position:relative|absolute;top:50%;transform:translateY(-50%)
+
+# 20.水平居中
+
+1.text-align:center;
+
+2.display:flex;justify-content:center;
+
+3.position:absolute;left:50%;margin-left:-0.5*width;
+
+4.position:relative|absolute;left:50%;transform:translateX(-50%)
+
+# 21.GET & POST
+
+GET: 
+1.参数显示在URL上,因此安全性也较
+2.大小有限制
+3.可被缓存
+4.仅允许ASCII字符
+
+POST:
+1.数据不显示在URL上,相比GET,安全性高一丢丢
+2.大小无限制
+3.不可被缓存
+4.允许传输二进制数据
+
+# 22.Cookie & localStorage & SessionStorage
+```
+Cookie
+
+//创建cookie
+date = new Date().toGMTString()
+documetn.cookie = "username=XXX;expires=date"
+//删除某个cookie
+data = new Date().toGMTString()-10000(设置时间过期)
+documetn.cookie = "username=XXX;expires=date"
+
+--cookie的存储大小仅为4KB左右,且有过期时间,另外，cookie会被用于与服务端交互,而另外两种则仅在客户端使用--
+
+
+LocalStorage
+
+//设置
+-LocalStorage.key = value
+-LocalStorage.setItem("key",value)
+//删除
+-LocalStorage.removeItem("key")
+
+--LocalStorage存储大小为5M左右，且无过期时间(除非被删除)--
+
+
+SessionStorage(会话概念)
+
+与LocalStorage用法差不多
+
+--SessionStorage存储大小为5M左右,仅在当前会话下有效，关闭页面或浏览器后被清除--
+
+```
 > 以上资料部分由本人平时积累总结，部分借鉴于网络，小白无意冒犯，若侵犯到您的权益，望告知。
