@@ -330,16 +330,20 @@ repaint:某些元素的状态发生改变(例如:color,backgroundColor),但Dom t
 
 [关于TCP的三次握手](https://github.com/jawil/blog/issues/14)
 ```
-TCP
+TCP(Transmission Control Protocol)
 三次握手，四次分手
-1.保持连接的状态
-2.保证传输可靠性
-3.传输速度较慢
+1.保持连接的状态(全双工)
+2.有拥塞机制
+3.保证传输可靠性
+4.首部20字节
+--多应用于文件传输(对数据的准确性要求高)--
 
-UDP
+UDP(User Datagram Protocol)
 1.不保证连接状态
 2.不保证数据安全送达
-3.传输速度较快
+3.首部8字节
+4.没有拥塞机制
+--多应用于视频,直播,网络语音等应用(对数据传输速率要求高)--
 ```
 
 # 19.垂直居中
@@ -410,4 +414,58 @@ SessionStorage(会话概念)
 --SessionStorage存储大小为5M左右,仅在当前会话下有效，关闭页面或浏览器后被清除--
 
 ```
+
+# 23.AMD/CMD & Commonjs & ES6 module
+
+CMD--Common Module Definition/AMD-Asynchronus Module Definition(用于客户端)异步加载
+```
+//Seajs
+//mod.js2
+define(function(){
+
+    exports.a = 1
+
+    //module.exports 只能出现一次
+    module.exports = {
+        a:12,
+        b:33,
+        show:function(){
+
+        }
+    }
+})
+
+require(['mod'],function(mod){
+
+})
+```
+
+Commonjs(应用于服务端)
+同步加载
+```
+//lib.js
+//为了方便，Node为每个模块提供一个exports变量，指向module.exports。这等同在每个模块头部，有一行这样的命令。
+//var exports = module.exports
+//http://javascript.ruanyifeng.com/nodejs/module.html#toc3
+
+exports.a = xxx
+module.exports = {}
+
+//main.js
+const mod = require('./lib')//文件路径若去掉./,则会去node_modules文件夹中找此模块
+```
+
+ES6(浏览器厂商未完全实现)
+```
+export {a:1}
+
+export default {}
+
+import name from './xxx'
+```
+> Commonjs和AMD的加载机制和ES6不同，前两者都是在运行时进行模块加载，而ES6中则是在编译阶段就发生模块加载。另外，前两者都是对值的拷贝，而ES6中则是对值的引用
+
+（未写完,回来再补）
+
+
 > 以上资料部分由本人平时积累总结，部分借鉴于网络，小白无意冒犯，若侵犯到您的权益，望告知。
