@@ -467,5 +467,41 @@ import name from './xxx'
 
 （未写完,回来再补）
 
+# 24.onscroll & onresize & onInput 渲染问题之解决措施(节流与防抖动)
+
+首先,我们要知道为什么发生scroll | resize | input 的时候会发生渲染问题,这里，我们要较为清楚的理解浏览器的(渲染过程)[上17]
+
+知道了浏览器的渲染机制后,我们就可以开始分析了,当用户进行如上的操作时,正常情况下scroll的回调函数是不停的去被调用的,若scroll的回调函数内部有较多的dom操作或者是引起浏览器reflow和repaint的操作,那就很有可能,在用户scroll一次的情况下没办法完成对应的操作,此时，如果不处理用户的行为,用户不停的scroll就会看到浏览器抖动或者卡顿或者是其他渲染问题,因此,对应用户不同的行为(一种是不停的scroll,一种是xxx),我们采取防抖动和节流的方法来处理
+
+```
+//防抖动
+function TimeControl(func,timeout){
+    var Timeout
+
+    return function(){
+        clearTimeout(Timeout)
+
+        Timeout = setTimeout(func,timeout)
+    }
+}
+
+function Animation(){ ... }
+
+window.addEventlistener('scroll',TimeControl(Animation,500))
+
+
+
+//节流
+function LoadControl(func,time){
+    var startTime = new Date()
+
+    return function(){
+        
+
+    }
+
+}
+
+```
 
 > 以上资料部分由本人平时积累总结，部分借鉴于网络，小白无意冒犯，若侵犯到您的权益，望告知。
