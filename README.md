@@ -471,17 +471,27 @@ import name from './xxx'
 
 首先,我们要知道为什么发生scroll | resize | input 的时候会发生渲染问题,这里，我们要较为清楚的理解浏览器的(渲染过程)[上17]
 
-知道了浏览器的渲染机制后,我们就可以开始分析了,当用户进行如上的操作时,正常情况下scroll的回调函数是不停的去被调用的,若scroll的回调函数内部有较多的dom操作或者是引起浏览器reflow和repaint的操作,那就很有可能,在用户scroll一次的情况下没办法完成对应的操作,此时，如果不处理用户的行为,用户不停的scroll就会看到浏览器抖动或者卡顿或者是其他渲染问题,因此,对应用户不同的行为(一种是不停的scroll,一种是xxx),我们采取防抖动和节流的方法来处理
+知道了浏览器的渲染机制后,我们就可以开始分析了,当用户进行scroll等操作时,我们是无法直接控制dom事件的触发频率的,若scroll的回调函数内部有较多的dom操作或者是引起浏览器reflow和repaint的操作,那就很有可能,在用户scroll一次的情况下没办法完成对应的操作,此时，如果不做任何处理,用户不停的scroll就会看到浏览器抖动或者卡顿或者是其他渲染问题(**根据非官方测试,在智能手机上，慢慢滚动一下，一秒可以触发事件100次之多。这么高的执行频率，你的滚动回调函数压力大吗？**),因此,对应用户不同的行为(一种是不停的scroll,一种是例如用户手指下滑,加载图片),我们采取防抖动和节流的方法来处理,j
 
 ```
+
 //防抖动
 function TimeControl(func,timeout){
+
     var Timeout
 
     return function(){
+
+        var context = this,args = arguments
+
+        console.log(args)
+
         clearTimeout(Timeout)
 
+        func.apply(context,args) //个人理解:此处这样做的目的是由于函数传过来的参数个数是未知的,因此我们可以用apply传回给函数
+
         Timeout = setTimeout(func,timeout)
+
     }
 }
 
@@ -491,17 +501,105 @@ window.addEventlistener('scroll',TimeControl(Animation,500))
 
 
 
-//节流
-function LoadControl(func,time){
-    var startTime = new Date()
+//节流(所谓节流就是限制回调函数在特定的时间至少执行特定的次数)
+function LoadControl(func,Limittime){
+
+    var timeout,start = new Date()
 
     return function(){
-        
 
+        var ars = arugments,
+            context = this,
+            cur = new Date()
+
+        clearTimeout(timeout)
+
+        if(cur - start >= Limittime){
+            func.apply(context,args)
+            start = cur
+        }else{
+            timeout = setTimeout(func,wait)
+        }
     }
 
 }
 
+function Animation(){ ... }
+
+windonw.addEventListener('scroll',LoadControl(Animation,1000))
 ```
+
+[_underscore源码](http://underscorejs.org/docs/underscore.html)
+```
+//防抖
+ _.debounce = function(func, wait, immediate) {
+    var timeout, args, context, timestamp, result;
+
+    var later = function() {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    };
+
+    return function() {
+      context = this;
+      args = arguments;
+      timestamp = _.now();
+      var callNow = immediate && !timeout;
+      if (!timeout) timeout = setTimeout(later, wait);
+      if (callNow) {
+        result = func.apply(context, args);
+        context = args = null;
+      }
+
+      return result;
+    };
+  };
+
+//节流
+_.throttle = function(func, wait, options) {
+    var context, args, result;
+    var timeout = null;
+    var previous = 0;
+    if (!options) options = {};
+    var later = function() {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    };
+    return function() {
+      var now = _.now();
+      if (!previous && options.leading === false) previous = now;
+      var remaining = wait - (now - previous);
+      context = this;
+      args = arguments;
+      if (remaining <= 0 || remaining > wait) {
+        if (timeout) {
+          clearTimeout(timeout);
+          timeout = null;
+        }
+        previous = now;
+        result = func.apply(context, args);
+        if (!timeout) context = args = null;
+      } else if (!timeout && options.trailing !== false) {
+        timeout = setTimeout(later, remaining);
+      }
+      return result;
+    };
+  };
+
+```
+[参考](https://www.cnblogs.com/coco1s/p/5499469.html)
+
+---
 
 > 以上资料部分由本人平时积累总结，部分借鉴于网络，小白无意冒犯，若侵犯到您的权益，望告知。
