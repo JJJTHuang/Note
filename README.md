@@ -412,8 +412,31 @@ SessionStorage(会话概念)
 与LocalStorage用法差不多
 
 --SessionStorage存储大小为5M左右,仅在当前会话下有效，关闭页面或浏览器后被清除--
-
 ```
+About Session:
+
+1.Session是啥?
+2.为啥有Session?
+3.Session有啥用？
+4.Session怎么用？
+
+Answer:
+1.首先,Session翻译过来就是“会话”,通俗的举一个栗子,场景如下:
+    王大明:刘梅梅,how r u?
+    刘梅梅:I'm fine,3Q,and u?
+    王大明:I‘m fine,too.
+    刘梅梅:Ok,goodbye.
+好了,以上就是一个会话。是不是很通俗？
+
+2.好,通俗的了解了Session后,我们思考一下,为什么网络通信中会出现Session。这里我们需要知道,http协议是[无状态的](https://www.zhihu.com/question/23202402),知道了无状态这个概念后,这里我们提一个日常生活随处可见的例子:二次自动登录,我们知道cookie可以在客户端存储4KB左右的东西,但是我们不可能把密码直接放到cookie,这样太危险了,这时候就出现了Session。
+
+3.Session为用户分配一个仅有的SessionID,并记录用户的登录状态,过期时间等。
+
+4.暂时略过(尝试之后就补上)
+
+https://blog.csdn.net/think2me/article/details/38726429 
+
+https://blog.csdn.net/macsnow/article/details/6893191
 
 # 23.AMD/CMD & Commonjs & ES6 module
 
@@ -536,6 +559,8 @@ CSS : pointer-events:none;//应用场景(性能优化):当我们监听scroll的
 [_underscore源码](http://underscorejs.org/docs/underscore.html)
 
 [参考](https://www.cnblogs.com/coco1s/p/5499469.html)
+
+# 25.[ECMA规范](http://www.ecma-international.org/ecma-262/8.0/)与[Javascript解析器](http://esprima.org/demo/parse.html#)
 
 ---
 
