@@ -115,7 +115,11 @@ data = [Object object],$el = \<div id="app">222\</div>,this.message = 222
 
 # 9.关于innerHtml的执行过程
 
-<br>
+先把插入节点的旧的内容都清除了,然后由浏览器来解析插入的字符串,并生成对应的dom,然后再插入到对应的节点,然后浏览器进行渲染。
+
+(相关问题:innerHtml比直接的dom操作效率高在哪里?)
+
+答:innerHtml的执行过程(解析和创建)是由浏览器来完成的,而dom操作是通过客户端的js来执行(这里暂时没搞懂,先记录下来)
 
 # 10.数组的快速乱序 & 字符串回文
 ```
@@ -561,6 +565,8 @@ CSS : pointer-events:none;//应用场景(性能优化):当我们监听scroll的
 [参考](https://www.cnblogs.com/coco1s/p/5499469.html)
 
 # 25.[ECMA规范](http://www.ecma-international.org/ecma-262/8.0/)与[Javascript解析器](http://esprima.org/demo/parse.html#)
+
+# 26.[前端优化](https://github.com/zwwill/blog/issues/1)
 
 ---
 
