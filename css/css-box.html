@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #div1 {
+      width: 200px;
+      height: 200px;
+      background: #abc;
+      color: aqua;
+    }
+    .wrapper {
+      display: grid;
+      grid-template-columns: 100px auto 100px;
+      grid-template-rows: 50px 100px 50px;
+    }
+    .wrapper>div{
+      background: #cbc;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id='div1'>
+  </div>
+  <section>
+    <article>
+      <p style="font-size: 20px;border: 0.1em solid;">helloWorld</p>
+    </article>
+  </section>
+
+  <section>
+    <div class="wrapper">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+    </div>
+  </section>
+</body>
+<script>
+  window.onload = function () {
+    let obj = document.querySelector('#div1')
+    // 这种写法只能取得内联样式的属性值
+    console.log(obj.style.height)
+
+    // 这种写法取得的是经过浏览器渲染后的属性值
+    // console.log(obj.currentStyle().height) // ✨仅IE支持
+    console.log(window.getComputedStyle(obj).width) // 兼容写法 200px
+
+    // 此方法能经过浏览器渲染，取得此元素相对于视口左上角的元素四个点绝对位置
+    console.log(obj.getBoundingClientRect().width) // 200 
+  }
+
+  // BFC(Block-Formating-Context)
+
+  // IFC(Inline-Formating-Context)(https://blog.csdn.net/Run_youngman/article/details/79343911)
+
+</script>
+
+</html>

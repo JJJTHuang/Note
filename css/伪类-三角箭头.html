@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>伪类选择器</title>
+    <style>
+        body {
+            background: #e1e1e1;
+        }
+
+        .container {
+            margin: 40px auto;
+            width: 600px;
+            border: 1px solid #eee;
+            padding: 10px;
+        }
+
+        .container:after {
+            clear: both;
+            content: "";
+            display: table;
+        }
+
+        .container img {
+            float: left;
+        }
+
+        .arrow-left {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background: #E9E9E9;
+            float: right;
+        }
+
+        .arrow-left:before {
+            z-index: 9999;
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-right: 20px solid #E9E9E9;
+            position: absolute;
+            left: -20px;
+            top: 80px;
+        }
+
+        .arrow-right {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background: #fff;
+            float: left;
+        }
+
+        .arrow-right img {
+            float: right;
+        }
+
+        .arrow-right:after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-left: 20px solid #fff;
+            position: absolute;
+            right: -20px;
+            top: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='container'>
+        <img alt='' src='http://placehold.it/400x200'>
+        <div class='arrow-left'></div>
+    </div>
+    <div class='container new'>
+        <div class='arrow-right'></div>
+        <img alt='' src='http://placehold.it/400x200'>
+    </div>
+
+
+    <div class="n">伪类选择器了解一下</div>
+    <div class="n">伪类选择器了解一下</div>
+    <div class="n">伪类选择器了解一下</div>
+</body>
+
+</html>

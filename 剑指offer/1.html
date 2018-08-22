@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>text</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+  <script>
+    window.onload = function () {
+      let vm = new Vue({
+        el: '#div1',
+        data () {
+          return {
+            text : 123
+          }
+        },
+        methods: {
+
+        }
+      })
+
+      let ele = document.querySelector('#d2')
+      console.log(ele.textContent = 555)
+
+
+      // setTimeout实现setInterval
+
+      var timer = setTimeout(() => {
+        console.log(1)
+      }, 1000);
+
+      clearTimeout(timer)
+
+      function mys (fn,second) {
+        fn()
+        function myInterval () {
+          let timer = setTimeout(myInterval, second);
+          fn()
+        }
+        setTimeout(myInterval, second);
+      }
+
+    }
+  </script>
+</head>
+<body>
+  <div id="div1">text{{text}}</div>
+
+  <div id="d2">ppp123</div>
+</body>
+</html>

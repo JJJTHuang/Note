@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <!-- <style>
+    html {
+      min-height: 100%;
+    }
+
+    body {
+      background: #E1E1E1;
+      background-size: cover;
+      background-position: 50% 50%;
+    }
+
+    .healthy-snacks {
+      margin: 2em auto;
+      width: 90%;
+      max-width: 680px;
+      background: #fff;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .healthy-snacks .featured-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .healthy-snacks .featured-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+    }
+
+    .healthy-snacks .featured-image .arrow {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 0px;
+      background-color: #fff;
+    }
+
+    .healthy-snacks .featured-image .arrow:before,
+    .healthy-snacks .featured-image .arrow:after {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      width: 80%;
+      height: 20px;
+      background-color: inherit;
+    }
+
+    .healthy-snacks .featured-image .arrow:before {
+      right: 80%;
+      -webkit-transform-origin: 100% 100%;
+      -moz-transform-origin: 100% 100%;
+      -ms-transform-origin: 100% 100%;
+      -o-transform-origin: 100% 100%;
+      transform-origin: 100% 100%;
+      -webkit-transform: skewX(45deg);
+      -moz-transform: skewX(45deg);
+      -ms-transform: skewX(45deg);
+      -o-transform: skewX(45deg);
+      transform: skewX(45deg);
+    }
+
+    .healthy-snacks .featured-image .arrow:after {
+      left: 20%;
+      -webkit-transform-origin: 0 100%;
+      -moz-transform-origin: 0 100%;
+      -ms-transform-origin: 0 100%;
+      -o-transform-origin: 0 100%;
+      transform-origin: 0 100%;
+      -webkit-transform: skewX(-45deg);
+      -moz-transform: skewX(-45deg);
+      -ms-transform: skewX(-45deg);
+      -o-transform: skewX(-45deg);
+      transform: skewX(-45deg);
+    }
+
+    .healthy-snacks article {
+      padding: 1em 1em 2em;
+    }
+
+    .healthy-snacks article:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .healthy-snacks article header {
+      border-bottom: 2px solid #9bb068;
+    }
+
+    .healthy-snacks article header h3 {
+      margin: 0 0 0.25em;
+      font-family: 'McLaren', cursive;
+      font-size: 1.5em;
+      color: #767d2e;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .healthy-snacks article .excerpt {
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .healthy-snacks article .excerpt p {
+      line-height: 24px;
+    }
+
+    .healthy-snacks article .excerpt a {
+      display: block;
+      margin-top: 1em;
+      color: #c00413;
+      text-decoration: none;
+    }
+
+    .healthy-snacks article .excerpt a:hover {
+      color: #fb2f40;
+    }
+
+    .healthy-snacks article .excerpt a span:first-child {
+      padding-right: 1em;
+      vertical-align: middle;
+    }
+
+    @media only screen and (min-width: 680px) {
+      .healthy-snacks article header {
+        width: 40%;
+        float: left;
+        border-bottom: none;
+        border-right: 2px solid #9bb068;
+      }
+      .healthy-snacks article header h3 {
+        margin: 1em 0;
+        font-size: 2em;
+      }
+      .healthy-snacks article header h3 span {
+        display: block;
+      }
+      .healthy-snacks article .excerpt {
+        width: 60%;
+        float: left;
+        padding-left: 2em;
+      }
+    }
+  </style> -->
+
+  <style>
+    *{
+      padding: 0;
+      margin:0;
+    }
+    img{
+       margin:0 auto;
+    }
+
+    .ar{
+      width: 100%;
+      position: relative;
+    }
+
+    .ar::before{
+      content: '';
+      position: absolute;
+      bottom: 0px;
+      width: 21%;
+      height: 20px;
+      background: #fff;
+      transform: skew(45deg)
+    }
+
+    .ar::after{
+      content: '';
+      position: absolute;
+      bottom: 0;
+      width: 70%;
+      left: 22%;
+      height: 20px;
+      background: #fff;
+      transform: skew(-45deg)
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div class="healthy-snacks">
+    <div class="featured-image">
+      <img src="https://user-gold-cdn.xitu.io/2018/8/10/16522abc6acc1150?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"
+        alt="Healthy Snacks" />
+      <div class="arrow"></div>
+    </div>
+    <article>
+      <header>
+        <h3>
+          <span>Healthy</span>
+          <span>Snacks</span>
+        </h3>
+      </header>
+      <div class="excerpt">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere perferendis perspiciatis temporibus debitis distinctio
+          blanditiis ea. Animi, placeat sint magni.</p>
+        <a href="#">
+          <span class="fa fa-arrow-circle-right"></span>
+          <span>Show me some recipes</span>
+        </a>
+      </div>
+    </article>
+  </div> -->
+
+  <div class="div1">
+    <img src="https://user-gold-cdn.xitu.io/2018/8/10/16522abc6acc1150?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+    <div class="ar"></div>
+  </div>
+</body>
+
+</html>

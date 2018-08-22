@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    window.onload = function () {
+      let oD = document.querySelector('#div1')
+      var eve2 = new CustomEvent('custom', {}) // 可传递一个option
+
+      oD.addEventListener('custom', function (ev) {
+          console.log('custom',ev.target,ev.currentTarget)
+      })
+
+      oD.addEventListener('click',function () {
+        oD.dispatchEvent(eve2)
+      },false)
+
+    }
+  </script>
+</head>
+<body>
+  <section>
+    <div id='div1'>123</div>
+  </section>
+</body>
+</html>
