@@ -165,14 +165,22 @@ var obj1 = new2(cons)
 
 ## 4.DOM事件流
 
+### 4.1 事件模型
+
 首先,DOM事件模型其实就是捕获和冒泡,
 DOM事件流分三个阶段,分别是捕获阶段,目标阶段,冒泡阶段
 
 **捕获阶段** :
-![捕获](./img/catch.jpg)
-**冒泡阶段**
 
-### Event对象
+![捕获](./img/catch.jpg)
+
+**冒泡阶段** :
+
+上图中的箭头逆置一下就是冒泡阶段。
+
+提及Dom事件流就不能不谈一下事件对象
+
+### 4.2 事件对象(Event)
 
 #### event.preventDefault() 阻止默认事件
 
@@ -184,7 +192,7 @@ DOM事件流分三个阶段,分别是捕获阶段,目标阶段,冒泡阶段
 
 #### event.target 当前被点击的元素
 
-### 自定义事件
+### 4.3 自定义事件
 
 ```javascript
 // 创建
@@ -203,11 +211,11 @@ ev.dispatchEvent(eve)
 
 &nbsp;
 
-## 5.原型链
+## 5. 原型链
 
 >原型链(Prototype Chain)的基本思想是,利用原型让一个引用类型继承另一个引用类型的属性和方法。--《Javascript高级程序设计》
 
-### 创建对象有几种方式
+### 5.1 创建对象有几种方式
 
 ```javascript
 // 1
@@ -222,7 +230,7 @@ new o2('o2')
 var o3 = Object.create({name:'o3'})
 ```
 
-### Prototype && __proto__
+### 5.2 Prototype && __proto__
 
 ```javascript
 function fn (name) {this.name = name}
@@ -235,7 +243,7 @@ obj.__proto__ === fn.prototype
 
 实际运用中,使用原型链的目的是可以通过实例对象中的__proto__不断的网上寻找属性或者方法的一条路,直到Object.prototype,当找到该属性or方法便会停止往上找,因此javascript的继承是基于原型链的。
 
-### Funciton
+### 5.3 Funciton
 
 ```javascript
 function fn (name) {this.name = name}
@@ -254,7 +262,7 @@ fn.__proto__ === Function.prototype
 
 ES5
 
-### 1.借助构造函数继承
+### 6.1 借助构造函数继承
 
 ```javascript
 function Parent(){
@@ -269,7 +277,7 @@ function Child(){
 
 缺点:通过改变上下文,只是部分继承了属性,原型链上的方法和属性没有被继承
 
-### 2.通过原型链继承
+### 6.2 通过原型链继承
 
 ```javascript
 function Parent(){
@@ -290,7 +298,7 @@ c2.name // change
 
 缺点:由于父对象属性被共享,某一实例改变了原型链上的属性，其他实例也受影响,而且实例构造函数为Parent
 
-### 3.组合继承
+### 6.3 组合继承
 
 ```javascript
 function Parent(){
@@ -306,7 +314,7 @@ Child.prototype = new Parent() // 2
 
 缺点:父构造函数被调用了两次,同时属性共享仍然未解决,实例构造函数为Parent
 
-### 4.组合继承优化
+### 6.4 组合继承优化
 
 ```javascript
 function Parent(){
@@ -323,7 +331,7 @@ Child.prototype = Parent.prototype
 优点:父构造函数被调用一次
 缺点:同时属性共享仍然未解决,实例构造函数为Parent
 
-### 5.组合继承优化2
+### 6.5 组合继承优化2
 
 ```javascript
 function Parent(){
