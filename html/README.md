@@ -1,18 +1,18 @@
 # HTML
 
-[DOCTYPE](#DOCTYPE)
+[1.DOCTYPE](#1doctype)
 
-[Viewport](#Viewport)
+[2.Viewport](#2viewport)
 
 &nbsp;
 
-## DOCTYPE
+## 1.DOCTYPE
 
 >了解DOCTYPE前,需知道DTD(Document type definition),DTD的作用是告诉浏览器该文档类型,浏览器根据文档类型决定使用何种协议来解析,而DOCTYPE的作用就是指明文档类型和DTD规范的,它是用来告知 Web 浏览器页面使用了哪种 HTML 版本。\
 \
->另外,H5不是基于[SGML](https://zh.wikipedia.org/wiki/SGML),所以不需指明DTD --[来源](http://www.runoob.com/tags/tag-doctype.html)
+>另外,H5不是基于[SGML](https://zh.wikipedia.org/wiki/SGML),所以不需指明DTD。 [--来源](http://www.runoob.com/tags/tag-doctype.html)
 
-### H5
+### Html5
 
 ```javascript
 <!DOCTYPE html>
@@ -32,7 +32,7 @@
 
 &nbsp;
 
-## Viewport
+## 2.Viewport
 
 ```javascript
 name = "viewport"

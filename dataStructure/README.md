@@ -1,26 +1,30 @@
 # 数据结构和算法(Data Structure & algorithm)
 
-[数组](#Array)
+[1.数组](#1array)
 
-[栈](#Stack)
+[2.栈](#2stack)
 
-[队列](#Queue)
+[3.队列](#3queue)
 
-[链表](#List)
+[4.链表](#4list)
 
-[集合](#Set)
+[5.集合](#5set)
 
-[字典](#Map)
+[6.字典](#6map)
 
-[树](#Tree)
+[7.树](#7tree)
 
-[图](#Graph)
+[8.图](#8graph)
 
-[排序](#Sort)
+[9.排序](#9sort)
 
 &nbsp;
 
-## Sort
+1 - 8 (待补)
+
+&nbsp;
+
+## 9.Sort
 
 ### 冒泡排序 - O(n²)
 

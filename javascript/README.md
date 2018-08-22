@@ -1,22 +1,22 @@
 # Javascript
 
-[ajax](#ajax)
+[1.ajax](#1ajax)
 
-[跨域](#跨域)
+[2.跨域](#2跨域)
 
-[new过程模拟](#new过程模拟)
+[3.new过程模拟](#3new过程模拟)
 
-[Dom事件流](#DOM事件流)
+[4.Dom事件流](#4dom事件流)
 
-[原型链](#原型链)
+[5.原型链](#5原型链)
 
-[Javascript中的继承](#Javascript中的继承)
+[6.Javascript中的继承](#6javascript中的继承)
 
-[回调地狱](#回调地狱)
+[7.回调地狱](#7回调地狱)
 
 &nbsp;
 
-## ajax
+## 1.ajax
 
 ```javascript
 function ajax(options) {
@@ -60,9 +60,9 @@ function ajax(options) {
 
 &nbsp;
 
-## 跨域
+## 2.跨域
 
-### 1.JSONP
+### 2.1 JSONP
 
 ```javascript
 let sc = document.createElement('script')
@@ -70,13 +70,13 @@ sc.src = 'http://www.xxx.com?a=1&b=2&cb=do'
 document.body.append(sc)
 ```
 
-### 2.后端设置Cross-Access-Allow-Origin
+### 2.2 后端设置Cross-Access-Allow-Origin
 
 ```javascript
 this.set('Cross-Access-Allow-Origin','*')
 ```
 
-### 3.document.domain跨域(前提主域相同)
+### 2.3 document.domain跨域(前提主域相同)
 
 例如:www.a.com引入了www.a.b.com的页面
 
@@ -86,7 +86,7 @@ this.set('Cross-Access-Allow-Origin','*')
 document.domain = 'a.com'
 ```
 
-### 4.postMessage跨域
+### 2.4 postMessage跨域
 
 ```javascript
 // 父窗体像子窗体发送消息
@@ -105,11 +105,11 @@ var onMessage = function(){
 }
 ```
 
-### 5.websocket跨域
+### 2.5 websocket跨域
 
 由于websocket使用的socket协议,不采取同源策略因此默认支持跨域
 
-### 6.Hash
+### 2.6 Hash
 
 情境: 页面A中有个iframeB
 
@@ -124,7 +124,7 @@ B.onhashchange = function () {
 }
 ```
 
-### 7.CORS(Cross-Origin-Resource-Sharing)
+### 2.7 CORS(Cross-Origin-Resource-Sharing)
 
 >CORS的基本原理是通过设置HTTP请求和返回中header，告知浏览器该请求是合法的。这涉及到服务器端和浏览器端双方的设置：请求的发起(Http Request Header)和服务器对请求正确的响应（Http response header）。\
 \
@@ -134,7 +134,7 @@ B.onhashchange = function () {
 
 &nbsp;
 
-## new过程模拟
+## 3.new过程模拟
 
 ```javascript
 // 新对象被创建
@@ -163,7 +163,7 @@ var obj1 = new2(cons)
 
 &nbsp;
 
-## DOM事件流
+## 4.DOM事件流
 
 首先,DOM事件模型其实就是捕获和冒泡,
 DOM事件流分三个阶段,分别是捕获阶段,目标阶段,冒泡阶段
@@ -203,7 +203,7 @@ ev.dispatchEvent(eve)
 
 &nbsp;
 
-## 原型链
+## 5.原型链
 
 >原型链(Prototype Chain)的基本思想是,利用原型让一个引用类型继承另一个引用类型的属性和方法。--《Javascript高级程序设计》
 
@@ -250,7 +250,7 @@ fn.__proto__ === Function.prototype
 
 &nbsp;
 
-## Javascript中的继承
+## 6.Javascript中的继承
 
 ES5
 
@@ -357,9 +357,9 @@ class child extends Parent {
 
 &nbsp;
 
-## Callback hell(回调地狱)
+## 7.回调地狱
 
-什么是回调地狱?
+什么是回调地狱(Callback hell)?
 
 ```javascript
 fs.readdir(source, function (err, files) {
