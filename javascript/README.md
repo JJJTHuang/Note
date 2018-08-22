@@ -14,7 +14,7 @@
 
 [回调地狱](#回调地狱)
 
----
+&nbsp;
 
 ## ajax
 
@@ -58,7 +58,7 @@ function ajax(options) {
 }
 ```
 
----
+&nbsp;
 
 ## 跨域
 
@@ -132,7 +132,7 @@ B.onhashchange = function () {
 
 这种方式需要客户端和服务端同时支持
 
----
+&nbsp;
 
 ## new过程模拟
 
@@ -161,7 +161,7 @@ function cons (name){
 var obj1 = new2(cons)
 ```
 
----
+&nbsp;
 
 ## DOM事件流
 
@@ -201,7 +201,7 @@ ev.addEventListener('custome',function () {
 ev.dispatchEvent(eve)
 ```
 
----
+&nbsp;
 
 ## 原型链
 
@@ -248,7 +248,7 @@ fn.__proto__ === Function.prototype
 \
 >注： 函数除了拥有命名的属性，还包含可执行代码、状态，用来确定被调用时的行为。函数的代码不限于 ECMAScript。
 
----
+&nbsp;
 
 ## Javascript中的继承
 
@@ -355,7 +355,7 @@ class child extends Parent {
 }
 ```
 
----
+&nbsp;
 
 ## Callback hell(回调地狱)
 
@@ -402,6 +402,6 @@ fs.readdir(source, function (err, files) {
 
 [参考](https://www.jianshu.com/p/d31d2ecb4162)
 
----
+&nbsp;
 
 (不断完善中...)
