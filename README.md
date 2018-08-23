@@ -1,14 +1,14 @@
 # 前端知识系统化整理-0.0.1
 
-### [HTML📒](./Html/README.md)
+### [HTML📒](./html/README.md)
 
-### [Css🌈](./Css/README.md)
+### [Css🌈](./css/README.md)
 
-### [Javascript🚀](./Javascript/README.md)
+### [Javascript🚀](./javascript/README.md)
 
-### [Http📡](./Http/README.md)
+### [Http📡](./http/README.md)
 
-### [数据结构✏️](./DataStructure/README.md)
+### [数据结构✏️](./dataStructure/README.md)
 
 <!-- ### [Node.js💨](./Node/README.md) -->
 
