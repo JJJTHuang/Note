@@ -52,6 +52,8 @@
 
 (以后用的)http2.0(暂不知道，可查看RFC文档提案)
 
-[参考](https://excaliburhan.com/post/things-you-should-know-about-browser-cache.html)
+参考:
+
+[缓存了解一下](https://excaliburhan.com/post/things-you-should-know-about-browser-cache.html)
 
 ----非官方总结,错误请指出，谢谢。----
