@@ -53,9 +53,21 @@ Cache-Control: max-age=300 (这里的时间是相对客户端的时间,且此字
 
 (解析层面)
 
-### 1.6 浏览器渲染过程
+### 1.6 减少reflow与repaint
 
-(待补)
+**reflow**触发条件(基本分三类):
+
+* 盒模型相关的属性: width，height，margin，display，border，etc
+
+* 定位属性及浮动相关的属性: top,position,float，etc
+
+* 改变节点内部文字结构也会触发回流: text-align, overflow, font-size, line-height, vertival-align，etc
+
+**repaint**触发条件:
+
+* 只要发生reflow就发生repaint
+
+* 不改变元素位置color,background,visibility,etc
 
 &nbsp;
 
@@ -73,7 +85,6 @@ Cache-Control: max-age=300 (这里的时间是相对客户端的时间,且此字
 
 #### 2.1.2 资源加载错误处理
 
-```javascript
 ①Object.onerror (这里要注意,此处的Object是一个dom对象,比如script,且,onerror方法是不会冒泡的,所以需要单独绑定onerror方法)
 
 ②performance.getEntires() (此方法返回一个成功加载资源数组,获取后可与理想情况需加载资源的集合进行对比)
@@ -81,9 +92,8 @@ Cache-Control: max-age=300 (这里的时间是相对客户端的时间,且此字
 ③Error事件捕获 (这里的重点是捕获,通过window.addEventListener('error',funciton (e) {},true),可捕获资源加载错误,若改为false则无效),那么这是为什么呢？
 
 解释③:[参考1.6](https://techblog.toutiao.com/2017/05/09/cdn/)
-```
 
-### 2.1.3 跨域脚本错误处理
+#### 2.1.3 跨域脚本错误处理
 
 ① script标签加crossorigin属性
 ② 服务端设置Cross-Access-Origin-Allow: * || 指定域名
@@ -98,3 +108,4 @@ Cache-Control: max-age=300 (这里的时间是相对客户端的时间,且此字
 参考:
 
 [域名劫持资源重载方案](https://techblog.toutiao.com/2017/05/09/cdn/)
+[reflow & repaint](https://juejin.im/post/5a9372895188257a6b06132e)
