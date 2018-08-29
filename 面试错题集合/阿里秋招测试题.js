@@ -48,6 +48,7 @@ mergePromise([ajax1, ajax2, ajax3]).then(data => {
 // done
 // [1, 2, 3]
 
+
 // 答案:
 // let a,b,c
 // async function a1() {

@@ -14,6 +14,8 @@
 
 [7.回调地狱](#7回调地狱)
 
+[8.浏览器端的事件循环](#8浏览器端的事件循环)
+
 &nbsp;
 
 ## 1.ajax
@@ -24,8 +26,9 @@ function ajax(options) {
   options.url = options.url || ''
   options.type = options.type || 'GET'
   options.data = options.data || {}
-  options.dataType = options.dataType || 'text'
+  options.dataType = options.dataType || 'json'
 
+  // IE兼容处理
   var xhr = XMLHttpRequest ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP')
 
   let data = options.data
@@ -211,7 +214,7 @@ ev.dispatchEvent(eve)
 
 &nbsp;
 
-## 5. 原型链
+## 5.原型链
 
 >原型链(Prototype Chain)的基本思想是,利用原型让一个引用类型继承另一个引用类型的属性和方法。--《Javascript高级程序设计》
 
@@ -408,8 +411,22 @@ fs.readdir(source, function (err, files) {
 
 避免回调地狱最重要的一方面，应该是将函数抽离出来。这么做可以让整个程序流更便于阅读和理解，也让新接触该程序的人不必在乎所有的细枝末节而把握住程序真正的目的。
 
-[参考](https://www.jianshu.com/p/d31d2ecb4162)
+&nbsp;
+
+## 8.浏览器端的事件循环
+
+首先要明确的是,事件循环是实现异步操作的一种方式。另外,这里讨论的是浏览器端的事件循环(非Node)。
+
+一个视频告诉你!  [Go](https://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html)
+
+所有事件都安排在主线程中执行,形成一个执行栈(Call Stack)，主线程外有一个任务队列(Task queue)，当发生异步操作时,会将该事件放入任务队列,主线程继续执行当前执行栈中的事件，当执行栈为空(即事件执行完后)，会去消息队列中找未执行的事件并执行，主线程重复以上操作就是Event loop.
 
 &nbsp;
+
+参考:
+
+[回调地狱](https://www.jianshu.com/p/d31d2ecb4162)
+
+[事件循环](https://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html)
 
 (不断完善中...)
