@@ -100,8 +100,6 @@ Content-Length: 122
 
 ![DNS](../Img/dns.jpg)
 
-注意:dns-prefetch需慎用,多页面重复会进行多次解析
-
 &nbsp;
 
 ## 5.缓存

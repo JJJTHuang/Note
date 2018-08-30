@@ -51,6 +51,8 @@ Cache-Control: max-age=300 (这里的时间是相对客户端的时间,且此字
 <link rel="dns-prefetch" href="http://eiv.baidu.com" />
 ```
 
+注意:dns-prefetch需慎用,多页面重复会进行多次解析
+
 (解析层面)
 
 ### 1.6 减少reflow与repaint
