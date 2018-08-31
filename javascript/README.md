@@ -52,7 +52,7 @@ function ajax(options) {
   // xhr.onreadystatechange 当一个 XMLHttpRequest 请求被 abort() 方法取消时，其对应的 readystatechange 事件不会被触发。
   // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/onreadystatechange
   xhr.onload = function () {
-    if (xhr.status == 200 || xhr == 304) {
+    if (xhr.status == 200 || xhr.status == 304) {
       options.success()
     } else {
       options.error()
@@ -145,7 +145,7 @@ function new2(func){
   // 1.继承构造函数的原型对象
   var o = Object.create(func.prototype)
   // 2.构造函数被执行,同时上下文会被指定为这个新实例
-  var obj = func.call(this)
+  var obj = func.call(o)
   console.log(obj)
   // 3.如果构造函数返回一个“对象”,那么这个对象会取代整个new出来的结果,
   // 如果没有返回对象则new出来的结果为步骤1的对象
@@ -159,10 +159,20 @@ function new2(func){
 function cons (name){
   this.name = name
   this.say = function(){console.log('say')}
+  // 补充:使用new关键字的时候，javascript帮我们自动加了return this
+  return this
 }
 
 var obj1 = new2(cons)
 ```
+
+总结:
+
+1.创建一个新的该构造函数的原型对象
+
+2.将该构造函数绑定到该原型对象(即改变this指向)
+
+3.return 该原型对象
 
 &nbsp;
 

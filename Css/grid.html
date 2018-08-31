@@ -1,17 +1,64 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Grid布局</title>
-  <link rel="stylesheet" href="./3.css">
-</head>
-<body>
-  <section>
-    <div class="c1">111111</div>
-    <div class="c2">2222222</div>
-    <div class="c3">33333</div>
-  </section>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Grid布局</title>
+    <style>
+      *{
+        padding: 0;
+        margin: 0;
+      }
+
+      header{
+        grid-area: header;
+        background: yellowgreen;
+      }
+
+      nav {
+        grid-area: nav;
+        background: pink;
+      }
+
+      main {
+        grid-area: main;
+      }
+
+      aside {
+        grid-area: aside;
+        background: #bbb;
+      }
+
+      footer {
+        grid-area: footer;
+        background: skyblue;
+      }
+
+      body{ 
+        text-align: center;
+        height: 100vh;
+        display: grid;
+        grid-template-areas:  "header header header"
+                    "nav main aside"
+                    "footer footer footer";
+        grid-template-rows: 100px 1fr 100px;
+        grid-template-columns: 100px 1fr 100px;
+      }
+
+      @media(max-width:700px){
+        body{
+          grid-template-areas: 'header' 'nav' 'main' 'aside' 'footer';
+          grid-template-rows: 50px 50px 1fr 50px 50px;
+          grid-template-columns: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>Header</header>
+    <nav>nav</nav>
+    <main>content</main>
+    <aside>aside</aside>
+    <footer>Footer</footer>
+  </body>
 </html>
