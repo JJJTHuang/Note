@@ -42,7 +42,7 @@ Cache-Control: max-age=300 (这里的时间是相对客户端的时间,且此字
 
 [协商缓存](../Http/cache.md#协商缓存)
 
-### 1.4 善用cdn
+### 1.4 善用[CDN](https://www.zhihu.com/question/36514327?rf=37353035)(Content Delivery Network)
 
 ### 1.5 DNS预解析
 
