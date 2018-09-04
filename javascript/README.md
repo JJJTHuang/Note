@@ -16,6 +16,8 @@
 
 [8.浏览器端的事件循环](#8浏览器端的事件循环)
 
+[9.重温var、let、const](#9var、let、const)
+
 &nbsp;
 
 ## 1.ajax
@@ -433,10 +435,62 @@ fs.readdir(source, function (err, files) {
 
 &nbsp;
 
+## 9.var、let、const
+
+重温var、let、const,与变量提升的一些思考。
+
+其实变量提升并不是专业的说法,只是大家口中所表述其现象的一种描述
+
+```javascript
+console.log(a) //undefined
+var a = 1
+
+console.log(b) //Reference Error:b is not defined
+let b = 2
+```
+
+我们可以将以上代码的执行逻辑抽象的看做为1.创建变量、2.初始化、3.赋值
+
+而在js执行环境中,**var的执行顺序**为
+
+* 1.创建变量
+
+* 2.初始化为undefined
+
+* 3.执行代码
+
+* 4.赋值a = 1
+
+let的执行顺序为
+
+* 1.创建变量
+
+* 2.执行代码
+
+* 3.初始化为2(若代码为let x则初始化为undefined)
+
+const的执行顺序为(**注意:**const没有赋值)
+
+* 1.创建变量
+
+* 2.初始化
+
+而且,**当使用let关键字创建变量过程报错后,变量就会永远处于创建状态**
+
+```javascript
+let x = x //报错
+
+let x = 1 //后面对该变量无论做任何操作都会报错
+```
+
+&nbsp;
+
 参考:
 
 [回调地狱](https://www.jianshu.com/p/d31d2ecb4162)
 
 [事件循环](https://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html)
+
+[我用两个月理解let](https://zhuanlan.zhihu.com/p/28140450)
 
 (不断完善中...)

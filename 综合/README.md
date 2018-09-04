@@ -4,6 +4,8 @@
 
 [2.错误监控](#2错误监控)
 
+[3.防抖与节流](#3防抖与节流)
+
 &nbsp;
 
 ## 1.性能优化
@@ -107,7 +109,33 @@ Cache-Control: max-age=300 (这里的时间是相对客户端的时间,且此字
 
 &nbsp;
 
+## 3.防抖与节流
+
+### **起源:** 屏幕抖动(或者称为闪屏)的原因:我们在上下滚动页面的时候,触发了scroll事件,每次滚动页面触发scroll事件的频率是很高的,当我们有在scroll时操作dom的需求时,由于dom对象的体量巨大,就会引起性能问题,浏览器可能在上一次scroll还未处理(渲染页面)完前,又触发了下一次,这样的事件不断的发生就可能会引起闪屏or屏幕抖动。(补充:我认为我们看到的抖动和闪屏是layout+painting的过程)
+
+### **措施:** 知道了问题的来源就解决了问题的一半,因此这里我们可以采用防抖和节流的措施
+
+```javascript
+// 防抖(主要思想是控制scroll引起的dom操作次数)
+function debounce (fn, time) {
+  var timer
+  return function () {
+    clearTimeout(timer)
+    timer = setTimeout(function () {
+      return fn()
+    },time)
+  }
+}
+```
+
+```javascript
+// 节流
+```
+
+&nbsp;
+
 参考:
 
 [域名劫持资源重载方案](https://techblog.toutiao.com/2017/05/09/cdn/)
 [reflow & repaint](https://juejin.im/post/5a9372895188257a6b06132e)
+[高性能滚动 scroll 及页面渲染优化](https://www.cnblogs.com/coco1s/p/5499469.html)
