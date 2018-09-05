@@ -197,9 +197,9 @@ DOM事件流分三个阶段,分别是捕获阶段,目标阶段,冒泡阶段
 
 ### 4.2 事件对象(Event)
 
-#### event.preventDefault() 阻止默认事件
+#### event.preventDefault() || e.returnValue = false || return false 阻止默认事件
 
-#### event.stopPropagation() 阻止捕获和冒泡
+#### event.stopPropagation() || event.cancelBubble = true 阻止捕获和冒泡
 
 #### event.stopImmediatePropagation() 阻止捕获和冒泡,并阻止事件冒泡并且阻止相同事件的其他侦听器被调用。
 
