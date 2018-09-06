@@ -120,7 +120,7 @@ function merge(l,r){
     return res
 }
 
-console.log(mergesort([3,2,1,5]))
+console.log(mergesort([3,2,1,5])) //测试数据
 ```
 
 ```javascript
