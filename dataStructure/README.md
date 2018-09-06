@@ -87,7 +87,41 @@ function insertSort(arr) {
 }
 ```
 
-### 二分排序 - O(nlogn)
+### 二分(也叫归并)排序 - O(nlogn)
+
+其基本思想是**分治**
+
+![归并排序](https://images2015.cnblogs.com/blog/1024555/201612/1024555-20161218163120151-452283750.png)
+
+```javascript
+function mergesort(arr){
+    if(arr.length<2) return arr
+    var mid = parseInt(arr.length/2)
+    var left = arr.slice(0,mid)
+    var right = arr.slice(mid)
+    return merge(mergesort(left),mergesort(right))
+}
+
+function merge(l,r){
+    var res = []
+    while(l.length && r.length){
+        if(l[0] > r[0]){
+        res.push(r.shift())
+        }else{
+        res.push(l.shift())
+        }
+    }
+
+    if(l.length){
+        res = res.concat(l)
+    }else{
+        res = res.concat(r)
+    }
+    return res
+}
+
+console.log(mergesort([3,2,1,5]))
+```
 
 ```javascript
 var mergeSortRec = function (array) {
@@ -292,3 +326,7 @@ function quicksort3ways(arr, l, r){
 ***学习Javascript数据结构与算法(第二版)***
 
 ***算法***
+
+博客:
+
+[归并排序](https://www.cnblogs.com/chengxiao/p/6194356.html)
