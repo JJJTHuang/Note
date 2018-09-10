@@ -41,3 +41,7 @@ var arr = [4,5,3,1,2]
 arr = arr.splice(0, arr.indexOf(3)).concat(arr.splice(arr.indexOf(4)))
 arr.sort()
 console.log(arr)
+
+
+//最小路径
+
