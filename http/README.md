@@ -160,13 +160,13 @@ Content-Length: 122
 
 ## 6.TCP三次握手
 
-![TCP](https://camo.githubusercontent.com/36cf7d4e1598683fe72a5e1c3e837b16840f4085/687474703a2f2f6f6f327239726e7a702e626b742e636c6f7564646e2e636f6d2f6a656c6c797468696e6b544350342e6a7067)
+![TCP](https://user-images.githubusercontent.com/6896562/41697418-3ef2c7f2-754b-11e8-9d26-c56519a8f663.png)
 
 ①.第一次握手：建立连接。客户端发送连接请求报文段，将SYN位置为1，Sequence Number为x；然后，客户端进入SYN_SEND状态，等待服务器的确认
 
-②.第二次握手：服务器收到SYN报文段。服务器收到客户端的SYN报文段，需要对这个SYN报文段进行确认，设置Acknowledgment Number为x+1(Sequence Number+1)；同时，自己自己还要发送SYN请求信息，将SYN位置为1，Sequence Number为y；服务器端将上述所有信息放到一个报文段（即SYN+ACK报文段）中，一并发送给客户端，此时服务器进入SYN_RECV状态；
+②.第二次握手：服务器收到SYN报文段。服务器收到客户端的SYN报文段，需要对这个SYN报文段进行确认，设置(ack)Acknowledgment Number为x+1(Sequence Number+1)；同时，自己自己还要发送SYN请求信息，将SYN位置为1，Sequence Number为y；服务器端将上述所有信息放到一个报文段（即SYN+ACK报文段）中，一并发送给客户端，此时服务器进入SYN_RECV状态；
 
-③.第三次握手：客户端收到服务器的SYN+ACK报文段。然后将Acknowledgment Number设置为y+1，向服务器发送ACK报文段，这个报文段发送完毕以后，客户端和服务器端都进入ESTABLISHED状态，完成TCP三次握手。
+③.第三次握手：客户端收到服务器的SYN+**ACK**(这里大写的ACK是同步位,不是指ack,两者区别可参考[ack&ACK](http://blog.51cto.com/oldpan/2043818))报文段。然后将Acknowledgment Number设置为y+1，向服务器发送ACK报文段，这个报文段发送完毕以后，客户端和服务器端都进入ESTABLISHED状态，完成TCP三次握手。
 
 &nbsp;
 
@@ -216,11 +216,19 @@ Content-Length: 122
 
 304 使用缓存资源
 
-403 身份认证失败,未授权
+401 未授权(Unauthorized)
 
-404 资源不存在
+403 服务器拒绝提供服务(Forbidden)
+
+404 资源不存在(Not Found)
 
 500 服务器内部错误
+
+502 网关错误(Bad gateway)
+
+503 服务器不可用(Service unavailable)
+
+504 网关超时(Gateway timeout)
 
 &nbsp;
 
