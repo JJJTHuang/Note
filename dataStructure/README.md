@@ -319,6 +319,34 @@ function quicksort3ways(arr, l, r){
 
 &nbsp;
 
+## 计数排序(O(n+k))
+
+```javascript
+// 计数排序
+function sort(arr){
+    var C = []
+    for(var i=0;i<arr.length;i++){
+        if(C[arr[i]]) C[arr[i]]++
+        else C[arr[i]]=1
+    }
+
+    var result = []
+    for(var j=0,i=C.length-1;i>=0;i--){
+        while(C[i]){
+        result.push(i)
+        C[i]--
+        }
+        j++
+    }
+    return result
+}
+
+var a = [8,3,2,1,2]
+console.log(sort(a))
+```
+
+&nbsp;
+
 (不断完善中....)
 
 参考:
