@@ -92,24 +92,35 @@
 // console.log(mergeSort([3,2,1]))
 
 // 计数排序
-function sort(arr){
-  var C = []
+// function sort(arr){
+//   var C = []
   
-  for(var i=0;i<arr.length;i++){
-    if(C[arr[i]]) C[arr[i]]++
-    else C[arr[i]]=1
-  }
+//   for(var i=0;i<arr.length;i++){
+//     if(C[arr[i]]) C[arr[i]]++
+//     else C[arr[i]]=1
+//   }
 
-  var result = []
-  for(var j=0,i=C.length-1;i>=0;i--){
-    while(C[i]){
-      result.push(i)
-      C[i]--
-    }
-    j++
+//   var result = []
+//   for(var j=0,i=C.length-1;i>=0;i--){
+//     while(C[i]){
+//       result.push(i)
+//       C[i]--
+//     }
+//     j++
+//   }
+//   return result
+// }
+
+// var a = [8,3,2,1,2]
+// console.log(sort(a))
+
+// 插入排序
+function insertSort(arr) {
+  for(var i=0;i<arr.length;i++){
+    
   }
-  return result
+  console.log(arr)
 }
 
-var a = [8,3,2,1,2]
-console.log(sort(a))
+insertSort([3,2,1])
+
