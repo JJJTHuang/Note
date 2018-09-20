@@ -92,35 +92,70 @@
 // console.log(mergeSort([3,2,1]))
 
 // 计数排序
-// function sort(arr){
-//   var C = []
+function sort(arr){
+  var C = []
   
-//   for(var i=0;i<arr.length;i++){
-//     if(C[arr[i]]) C[arr[i]]++
-//     else C[arr[i]]=1
-//   }
+  for(var i=0;i<arr.length;i++){
+    if(C[arr[i]]) C[arr[i]]++
+    else C[arr[i]]=1
+  }
 
-//   var result = []
-//   for(var j=0,i=C.length-1;i>=0;i--){
-//     while(C[i]){
-//       result.push(i)
-//       C[i]--
-//     }
-//     j++
-//   }
-//   return result
-// }
+  var result = []
+  for(var i=C.length-1;i>=0;i--){
+    while(C[i]){
+      result.unshift(i)
+      C[i]--
+    }
+  }
+  return result
+}
 
-// var a = [8,3,2,1,2]
-// console.log(sort(a))
+var a = [8,3,2,1,2]
+console.log(sort(a))
 
 // 插入排序
 function insertSort(arr) {
-  for(var i=0;i<arr.length;i++){
-    
+  var j,len=arr.length,temp
+  for(var i=1;i<len;i++){
+    j = i
+    var temp = arr[i]
+    while(j>0 && arr[j-1] > temp){
+      arr[j] = arr[j-1]
+      j--
+    }
+    arr[j] = temp
   }
   console.log(arr)
 }
 
 insertSort([3,2,1])
 
+
+function countSort(arr){
+  var res = [],len = arr.length
+  for(var i=0;i<len;i++){
+    if(res[arr[i]]) res[arr[i]]++
+    else res[arr[i]]=1
+  }
+  var result = [],temp
+  for(var i=res.length-1;i>-1;i--){
+    while(res[i]){
+      result.unshift(i)
+      res[i]--
+    }
+  }
+  console.log(result)
+}
+countSort([5,4,6,7,1])
+
+// var a = [1,2,3,4,5]
+
+// // a.splice(1)
+
+// var b = a.slice(1)
+
+// // a.shift()
+
+// // a.unshift()
+
+// console.log(a,b)
