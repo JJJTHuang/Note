@@ -1,0 +1,26 @@
+<ul id="test">
+  <li>
+    <ul class="leave-sensitive">
+      <li>item 1-1</li>
+      <li>item 1-2</li>
+    </ul>
+  </li>
+  <li>
+    <ul class="leave-sensitive">
+      <li>item 2-1</li>
+      <li>item 2-2</li>
+    </ul>
+  </li>
+</ul>
+
+<script>
+  var delegationSelector = document.getElementsByClassName("leave-sensitive")
+
+  document.getElementById("test").addEventListener("mouseleave", function (event) {
+    console.log(1)
+  })
+
+  delegationSelector[0].addEventListener("mouseleave", function (event) {
+    console.log(1)
+  })
+</script>

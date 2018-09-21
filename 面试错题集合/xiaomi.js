@@ -35,7 +35,7 @@ function count(arr) {
 
     end = start + 1
 
-    while (arr[end] <= arr[start]) end++
+    while (arr[end] < arr[start]) end++
     console.log('end:',end)
     
     if(end===arr.length){
