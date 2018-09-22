@@ -98,7 +98,7 @@ Content-Length: 122
 
 **浏览器缓存**-**系统缓存**-**路由器缓存**-**ISP DNS缓存**-**递归搜索**
 
-![DNS](../Img/dns.jpg)
+![DNS](../img/dns.jpg)
 
 &nbsp;
 
