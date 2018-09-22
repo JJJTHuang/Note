@@ -6,6 +6,8 @@
 
 [3.防抖与节流](#3防抖与节流)
 
+[4.内容安全策略](#4内容安全策略)
+
 &nbsp;
 
 ## 1.性能优化
@@ -71,7 +73,7 @@ Cache-Control: max-age=300 (这里的时间是相对客户端的时间,且此字
 
 * 只要发生reflow就发生repaint
 
-* 不改变元素位置color,background,visibility,etc
+* 改变元素位置color,部分background,visibility,etc
 
 &nbsp;
 
@@ -164,6 +166,18 @@ window.onscroll = throttle(touch,1000,2000)
 
 &nbsp;
 
+## 4.内容安全策略
+
+>内容安全策略(Content Security Policy),是一个额外安全层,用于检测并削弱某些特定类型的攻击,包括XSS和数据注入等攻击。无论是数据盗取、网站内容污染还是散发恶意软件，这些攻击都是主要手段。
+
+如何设置？
+
+1.设置http头部Content-Security-Policy
+
+2.设置```<meta http-equiv="Content-Security-Policy" content="default-src 'self';child-src 'none';">```
+
+&nbsp;
+
 参考:
 
 [域名劫持资源重载方案](https://techblog.toutiao.com/2017/05/09/cdn/)
@@ -171,3 +185,5 @@ window.onscroll = throttle(touch,1000,2000)
 [reflow & repaint](https://juejin.im/post/5a9372895188257a6b06132e)
 
 [高性能滚动 scroll 及页面渲染优化](https://www.cnblogs.com/coco1s/p/5499469.html)
+
+[内容安全策略-CSP](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP)
