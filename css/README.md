@@ -1,14 +1,14 @@
 # Css🌈
 
-[Demo](https://codepen.io/Timm515/pen/wEgMRv)(拉伸一下浏览器)
+[Grid布局](https://output.jsbin.com/zudase)(拉伸一下浏览器)
+
+[宽随高变动](https://jsbin.com/totiqus/edit?js,output)(拉伸一下浏览器)
+
+[水平垂直居中](https://jsbin.com/hurobez/1/edit?html,css,output)
+
+[清除浮动](https://jsbin.com/pakumec/2/edit?html,css,output)
 
 [获取元素样式](#获取元素样式)
-
-[清除浮动](#清除浮动的方式)
-
-[Grid](./grid.html)
-
-[水平垂直居中](./水平垂直居中.html)
 
 &nbsp;
 

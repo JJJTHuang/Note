@@ -11,20 +11,24 @@
       width: 100%;
       background: #abc;
     }
+    
   </style>
   <script>
     window.onload = function () {
-      let oD = document.querySelector('#div')
+        var oD = document.querySelector('#div')
 
-      oD.style.height = getComputedStyle(oD).width || oD.currentStyle().width //兼容IE
-
-      window.onresize = ()=>{
-        oD.style.height = getComputedStyle(oD).width || oD.currentStyle().width
+        oD.style.height = getComputedStyle(oD).width || oD.currentStyle().width;//兼容IE
+        var oP = document.getElementsByTagName('p');
+        window.onresize = function () {
+          var num = getComputedStyle(oD).width || oD.currentStyle().width
+          oD.style.height = num
+          oP[0].innerHTML = num
+        }
       }
-    }
   </script>
 </head>
 <body>
   <div id='div'></div>
+  <p></p>
 </body>
 </html>
