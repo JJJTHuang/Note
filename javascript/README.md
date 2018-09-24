@@ -18,6 +18,8 @@
 
 [9.重温var、let、const](#9var、let、const)
 
+[10.SPA原理浅尝](#10spa原理浅尝)
+
 &nbsp;
 
 ## 1.ajax
@@ -485,6 +487,16 @@ let x = 1 //后面对该变量无论做任何操作都会报错
 
 &nbsp;
 
+## 10.SPA原理浅尝
+
+传统的web应用(每次更改url都需要发起请求)和桌面应用(完全存储在本地)我们都很熟悉，而spa就是结合了两种者部分点的一种产物，当然，spa也会有一些缺点(例如首屏加载时间长)。实现spa(Single Page Application)路由的方法大致有两种
+
+1.[onhashchange](https://output.jsbin.com/tepudov#page1)
+
+2.[history api(pushState,replaceState)](https://jsbin.com/civebo/edit?html,js,output)
+
+&nbsp;
+
 参考:
 
 [回调地狱](https://www.jianshu.com/p/d31d2ecb4162)
@@ -492,5 +504,7 @@ let x = 1 //后面对该变量无论做任何操作都会报错
 [事件循环](https://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html)
 
 [我用两个月理解let](https://zhuanlan.zhihu.com/p/28140450)
+
+[前端路由实现](https://blog.csdn.net/Faremax/article/details/78788725#4)
 
 (不断完善中...)
