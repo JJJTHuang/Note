@@ -2,9 +2,9 @@
 
 [Grid布局](https://output.jsbin.com/zudase)(拉伸一下浏览器)
 
-[宽随高变动](https://jsbin.com/totiqus/edit?js,output)(拉伸一下浏览器)
+[宽随高变动](https://output.jsbin.com/totiqus)(拉伸一下浏览器)
 
-[水平垂直居中](https://jsbin.com/hurobez/1/edit?html,css,output)
+[水平垂直居中](https://jsbin.com/hurobez/edit?html,css,output)
 
 [清除浮动](https://jsbin.com/pakumec/2/edit?html,css,output)
 
