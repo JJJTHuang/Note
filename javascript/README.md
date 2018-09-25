@@ -139,6 +139,8 @@ B.onhashchange = function () {
 
 这种方式需要客户端和服务端同时支持
 
+### 2.8[Flash跨域](https://segmentfault.com/a/1190000009299490#articleHeader10)
+
 &nbsp;
 
 ## 3.new过程模拟
