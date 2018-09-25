@@ -495,7 +495,7 @@ let x = 1 //后面对该变量无论做任何操作都会报错
 
 1.[onhashchange](https://output.jsbin.com/tepudov#page1)
 
-2.[history api(pushState,replaceState)](https://jsbin.com/civebo/edit?html,js,output)
+2.[history api(pushState,replaceState)]https://jsbin.com/civebo/edit?html,js,output)
 
 &nbsp;
 

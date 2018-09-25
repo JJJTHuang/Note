@@ -9,7 +9,7 @@ op.then(()=>{console.log(2)}).then(async ()=>{
     console.log(3)
   }, 3000);
   console.log(5)
-  return this
+  // return this
 }).then(()=>{
   console.log(4)
 })

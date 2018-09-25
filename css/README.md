@@ -8,6 +8,8 @@
 
 [清除浮动](https://jsbin.com/pakumec/2/edit?html,css,output)
 
+[水平垂直自适应](https://jsbin.com/dejavec/edit?html,css,output)
+
 [获取元素样式](#获取元素样式)
 
 &nbsp;
