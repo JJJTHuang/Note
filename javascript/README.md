@@ -20,6 +20,8 @@
 
 [10.SPA原理浅尝](#10spa原理浅尝)
 
+[11.闭包](#闭包)
+
 &nbsp;
 
 ## 1.ajax
@@ -499,6 +501,28 @@ let x = 1 //后面对该变量无论做任何操作都会报错
 
 &nbsp;
 
+## 11.闭包
+
+>闭包是函数和声明该函数的词法环境的组合。
+
+eg:
+
+```javascript
+var name = "outer"
+function makeFunc() {
+    var name = "inner";
+    function displayName() {
+        alert(name);
+    }
+    return displayName;
+}
+
+var myFunc = makeFunc();
+myFunc();
+```
+
+&nbsp;
+
 参考:
 
 [回调地狱](https://www.jianshu.com/p/d31d2ecb4162)
@@ -508,5 +532,7 @@ let x = 1 //后面对该变量无论做任何操作都会报错
 [我用两个月理解let](https://zhuanlan.zhihu.com/p/28140450)
 
 [前端路由实现](https://blog.csdn.net/Faremax/article/details/78788725#4)
+
+[闭包](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures)
 
 (不断完善中...)
