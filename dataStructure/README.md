@@ -1,4 +1,4 @@
-# 数据结构和算法(Data Structure & algorithm)✏️
+# 数据结构(Data Structure)✏️
 
 [1.数组](#1array)
 
