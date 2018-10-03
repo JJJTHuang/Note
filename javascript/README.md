@@ -537,6 +537,8 @@ myFunc();
 
 [前端路由实现](https://blog.csdn.net/Faremax/article/details/78788725#4)
 
-[闭包](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures)
+[闭包1](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures)
+
+[闭包2](https://segmentfault.com/a/1190000002778015#articleHeader3)
 
 (不断完善中...)
