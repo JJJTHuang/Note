@@ -75,6 +75,10 @@ Cache-Control: max-age=300 (这里的时间是相对客户端的时间,且此字
 
 * 改变元素位置color,部分background,visibility,etc
 
+### 1.7 资源预加载
+
+**[Preload](https://mp.weixin.qq.com/s?__biz=MzA5NzkwNDk3MQ==&mid=2650587940&idx=1&sn=12eb51f4f9c749f68d137dfcf417f7ba&scene=21#wechat_redirect)** & **[Prefetch](https://mp.weixin.qq.com/s/xcwS91SZ3EmBtql0oIynDQ)**
+
 &nbsp;
 
 ## 2.错误监控
@@ -187,3 +191,7 @@ window.onscroll = throttle(touch,1000,2000)
 [高性能滚动 scroll 及页面渲染优化](https://www.cnblogs.com/coco1s/p/5499469.html)
 
 [内容安全策略-CSP](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP)
+
+[Preload](https://mp.weixin.qq.com/s?__biz=MzA5NzkwNDk3MQ==&mid=2650587940&idx=1&sn=12eb51f4f9c749f68d137dfcf417f7ba&scene=21#wechat_redirect)
+
+[Prefetch](https://mp.weixin.qq.com/s/xcwS91SZ3EmBtql0oIynDQ)
