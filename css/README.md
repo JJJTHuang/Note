@@ -4,7 +4,7 @@
 
 [宽随高变动](https://output.jsbin.com/totiqus)(拉伸一下浏览器)
 
-[水平垂直居中](https://jsbin.com/hurobez/edit?html,css,output)
+[水平垂直居中](https://yanhaijing.com/css/2018/01/17/horizontal-vertical-center/)
 
 [清除浮动](https://jsbin.com/pakumec/2/edit?html,css,output)
 
@@ -88,5 +88,7 @@ oDiv.getBoundingClientRect().width
 [BFC](https://segmentfault.com/a/1190000009545742)
 
 [em & rem](https://yanhaijing.com/css/2017/09/29/principle-of-rem-layout/)
+
+[水平垂直居中](https://yanhaijing.com/css/2018/01/17/horizontal-vertical-center/)
 
 (不断完善中...)
