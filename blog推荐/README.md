@@ -11,3 +11,7 @@
 [Css权威指南第四版](https://css.falselive.cn/)
 
 [数组去重](https://github.com/mqyqingfeng/Blog/issues/27)
+
+[内存泄露](https://jinlong.github.io/2016/05/01/4-Types-of-Memory-Leaks-in-JavaScript-and-How-to-Get-Rid-Of-Them/)
+
+[前端导航](http://www.daqianduan.com/nav)
