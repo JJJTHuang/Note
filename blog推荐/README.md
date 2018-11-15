@@ -1,5 +1,7 @@
 # Blog
 
+[8012,前端如何学习](https://www.infoq.cn/article/modern-frontend-developer-in-2018)
+
 [B Tree](http://blog.jobbole.com/111757/)
 
 [头条技术](https://techblog.toutiao.com/)
