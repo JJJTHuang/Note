@@ -493,11 +493,11 @@ let x = 1 //后面对该变量无论做任何操作都会报错
 
 ## 10.SPA原理浅尝
 
-传统的web应用(每次更改url都需要发起请求)和桌面应用(完全存储在本地)我们都很熟悉，而spa就是结合了两种者部分点的一种产物，当然，spa也会有一些缺点(例如首屏加载时间长)。实现spa(Single Page Application)路由的方法大致有两种
+传统的web应用(下载体量对大多桌面应用而言较小,即用即请求)和桌面应用(需先下载(整个程序的源代码)到本机,方可使用)我们都很熟悉，而spa就是结合了两种者部分特点(大部分文件(html/css/js)请求一次即可,而后的大多交互则是数据(如商品信息数据))的一种产物，当然，spa也会有一些缺点(例如首屏加载时间长)。实现spa(Single Page Application)路由的方法大致有两种
 
-1.[onhashchange](https://output.jsbin.com/tepudov#page1)
+1.[onhashchange](https://output.jsbin.com/tepudov#page1)(url中有变化)
 
-2.[history api(pushState,replaceState)](https://jsbin.com/civebo/edit?html,js,output)
+2.[history api(pushState,replaceState)](https://jsbin.com/civebo/edit?html,js,output)(url中无变化)
 
 &nbsp;
 
